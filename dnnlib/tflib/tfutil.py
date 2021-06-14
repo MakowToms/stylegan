@@ -125,7 +125,7 @@ def assert_tf_initialized():
         raise RuntimeError("No default TensorFlow session found. Please call dnnlib.tflib.init_tf().")
 
 
-def create_session(config_dict: dict = None, force_as_default: bool = False) -> tf.Session:
+def create_session(config_dict: dict = None, force_as_default: bool = False):
     """Create tf.Session based on config dict."""
     # Setup TensorFlow config proto.
     cfg = _sanitize_tf_config(config_dict)
@@ -149,7 +149,7 @@ def create_session(config_dict: dict = None, force_as_default: bool = False) -> 
     return session
 
 
-def init_uninitialized_vars(target_vars: List[tf.Variable] = None) -> None:
+def init_uninitialized_vars(target_vars = None) -> None:
     """Initialize all tf.Variables that have not already been initialized.
 
     Equivalent to the following, but more efficient and does not bloat the tf graph:
@@ -205,7 +205,7 @@ def set_vars(var_to_value_dict: dict) -> None:
     run(ops, feed_dict)
 
 
-def create_var_with_large_initial_value(initial_value: np.ndarray, *args, **kwargs):
+def create_var_with_large_initial_value(initial_value, *args, **kwargs):
     """Create tf.Variable with large initial value without bloating the tf graph."""
     assert_tf_initialized()
     assert isinstance(initial_value, np.ndarray)
