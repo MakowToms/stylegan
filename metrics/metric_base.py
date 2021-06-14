@@ -13,7 +13,8 @@ import hashlib
 import numpy as np
 
 import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()import dnnlib
+tf.disable_v2_behavior()
+import dnnlib
 import dnnlib.tflib as tflib
 
 import config
